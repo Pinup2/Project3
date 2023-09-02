@@ -1,10 +1,8 @@
 import { useForm } from "../hooks/useForm";
+import { initialState } from "../states/loginState";
+import SubmitButton from "./SubmitButton";
+import InputField from "./InputField";
 function Login() {
-    const initialState = {
-        email: "",
-        password: "",
-    };
-
     const { onChange, onSubmit, values } = useForm(
         loginUserCallback,
         initialState
@@ -18,24 +16,18 @@ function Login() {
     return (
         <form onSubmit={onSubmit}>
             <div>
-                <input
-                    name='email'
-                    id='email'
-                    type='email'
-                    placeholder='Email'
-                    onChange={onChange}
-                    required
-                />
-
-                <input
-                    name='password'
-                    id='password'
-                    type='password'
-                    placeholder='Password'
-                    onChange={onChange}
-                    required
-                />
-                <button type='submit'>Login</button>
+            <InputField 
+            type="email" 
+            name="email" 
+            placeholder="Email" 
+            onChange={onChange} 
+            />
+            <InputField 
+            type="password" 
+            name="password" 
+            placeholder="Password" 
+            onChange={onChange} />
+            <SubmitButton/>
             </div>
         </form>
     );
